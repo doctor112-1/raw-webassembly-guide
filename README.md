@@ -16,5 +16,5 @@ Most of the time, WebAssembly is just a target that something compiles to, a mag
 
 [Get Started →](/guide/table-of-contents.md)
 
-<sub>Credits to webassembly.org for the original image</sub>
+<sub>Credits to webassembly.org for the original image</sub>  
 <sub>Inspiration taken from https://github.com/hackclub/some-assembly-required</sub>
