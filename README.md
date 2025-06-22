@@ -14,7 +14,11 @@ The benefit of compiling to WebAssembly, is that your code can run almost anywhe
 
 Most of the time, WebAssembly is just a target that something compiles to, a magical file that (hopefully) works. But how does it work? I made this repo to write down what I learnt, and hopefully to teach others the magic behind WebAssembly.
 
-[Get Started →](/guide/table-of-contents.md)
+<p align="center">
+  <a href="/guide/table-of-contents.md">
+    Get Started →
+  </a>
+</p>
 
 <sub>Credits to webassembly.org for the original image</sub>  
 <sub>Inspiration taken from https://github.com/hackclub/some-assembly-required</sub>
