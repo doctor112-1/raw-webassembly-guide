@@ -31,8 +31,7 @@ const encodeSignedLeb128FromInt32 = (value) => {
 };
 ```
 
-
-The wikipedia article doesn't have an implementation for unsigned 32-bit integers, but luckily they have an implementation in c-like psuedocode. With help from <a href="https://blog.nthia.dev/writing-wasm-as-raw-bytes.html">https://blog.nthia.dev/writing-wasm-as-raw-bytes.html</a> I was able to create the javascript implementation.
+The wikipedia article doesn't have an implementation for unsigned 32-bit integers, but luckily they have an implementation in c-like psuedocode. With help from <a href="https://blog.nthia.dev/writing-wasm-as-raw-bytes.html">https://blog.nthia.dev/writing-wasm-as-raw-bytes.html</a> we are able to create the javascript implementation.
 
 ```
 const encodeUnsignedLeb128FromInt32 = (value) => {
@@ -47,5 +46,27 @@ const encodeUnsignedLeb128FromInt32 = (value) => {
     result.push(byte_)
   } while (value != 0)
   return result
+}
+```
+
+Let's also have a function to encode strings into bytes.
+
+```
+const convertStringToByte = (string) => {
+  const encoder = new TextEncoder()
+  return Array.from(encoder.encode(string))
+}
+```
+
+All we do here, is encode a string, then convert it into an array. We convert it into an array, since at the end is when we will convert into an Uint8Array.
+
+Finally, we will want to add a function for encoding vectors. According to the <a href="https://webassembly.github.io/spec/core/binary/conventions.html#vectors">WebAssembly spec</a>, "Vectors are encoded with their u32 length followed by the encoding of their element sequence." This just means that every vector must have their length first in u32, then their content.
+
+```
+const encodeVector() = (things) => {
+  return [
+    encodeUnsignedLeb128FromInt32(things.length),
+    things
+  ]
 }
 ```
